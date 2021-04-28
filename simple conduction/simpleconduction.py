@@ -20,7 +20,7 @@ nx = int(L/dx) + 1                  # Total number of points in the x-direction,
                                     # (n+1) points for n elements. Use int to avoid Python breaking.
 x = np.linspace(0,L,nx)             # Creation of the x vector for plotting purposes. It is composed of linearly spaced points.
 
-t_sim = 180                         # Total physical time to simulate, in seconds.
+t_sim = 181                         # Total physical time to simulate, in seconds.
 dt = 0.01                            # Time discretization, in seconds.
 nt = int(t_sim/dt)                  # Total number of timesteps, unitless. Use int to avoid Python breaking.
 
@@ -63,7 +63,8 @@ for counter in range(1,nt):         # Use a counter variable to iterate through 
         pyplot.xlabel('Distance [m]')
         pyplot.xlim([0, L])                                          
         pyplot.ylabel('Temperature [K]')
-        pyplot.ylim([T[0], T_A])
+        pyplot.ylim([(T[0]-3.15), (T_A+1.85)])
+        pyplot.grid(linestyle = '--', linewidth = 0.5)
         pyplot.savefig('figures/figure'+str(int(counter/(1/dt)))+'.png', dpi=150, transparent=False, facecolor='#ffffff', bbox_inches='tight', pad_inches=0.25)
 
     ####################
